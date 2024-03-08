@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page(#{menu.admin}, 'admin')}"
+      th:lang="${#locale.language}">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page" th:text="#{menu.admin}"></li>
+    <li class="breadcrumb-item active" aria-current="page" th:text="#{menu.overview}"></li>
+</ol>
+
+<div th:fragment="content">
+
+</div>
+
+<div th:fragment="scripts">
+</div>
+
+</body>
+</html>

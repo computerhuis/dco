@@ -1,0 +1,25 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# IntelliJ
+*.iml
+.idea/
+
+# Maven
+target/
+release.properties
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+*.class
+*.info
+tree.txt
+analyze.txt
+
+# Liquibase
+liquibase.properties
+
+# Project
+application-otap.yml
+keystore.p12
+*.log
