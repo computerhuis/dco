@@ -1,6 +1,5 @@
 package com.github.computerhuis.dco.web.computer;
 
-import com.github.computerhuis.dco.repository.CompanyRepository;
 import com.github.computerhuis.dco.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +20,6 @@ class ComputerController {
 
     private final com.github.computerhuis.dco.repository.ComputerRepository computerRepository;
     private final PersonRepository personRepository;
-    private final CompanyRepository companyRepository;
 
     @GetMapping
     public String all() {
@@ -37,13 +35,8 @@ class ComputerController {
         if (computer.isPresent()) {
             view.setComputer(computer.get());
 
-            if (computer.get().getCompanyId() != null) {
-                val donor = companyRepository.findById(computer.get().getCompanyId());
-                donor.ifPresent(view::setDonor);
-            }
-
-            if (computer.get().getPersonId() != null) {
-                val owner = personRepository.findById(computer.get().getPersonId());
+            if (computer.get().getCustomerId() != null) {
+                val owner = personRepository.findById(computer.get().getCustomerId());
                 owner.ifPresent(view::setOwner);
             }
         }

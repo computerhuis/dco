@@ -25,7 +25,7 @@ $(document).ready(function () {
             },
             {
                 render: function (data, type, row, meta) {
-                    return new Date(row['register']).toLocaleDateString();
+                    return new Date(row['registered']).toLocaleDateString();
                 }
             },
             {

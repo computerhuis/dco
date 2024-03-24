@@ -30,8 +30,7 @@ public class Computer {
     private String manufacturer;
     private String model;
     private String specification;
-    private Long personId;
-    private Long companyId;
+    private Long customerId;
 
     public String getFormFactorName() {
         if (formFactor != null) {

@@ -20,12 +20,6 @@
             </div>
         </div>
         <div class="row mt-1">
-            <label class="col-4 col-form-label" th:text="#{generic.donor}"></label>
-            <div class="col-8 col-form-label">
-                <a th:if="*{donor}" th:href="@{'/company/'+*{donor.id}}" th:text="*{donor.name}"></a>
-            </div>
-        </div>
-        <div class="row mt-1">
             <label class="col-4 col-form-label" for="type" th:text="#{generic.type}"></label>
             <div class="col-8">
                 <select id="type" class="form-select" th:field="*{computer.formFactor}">

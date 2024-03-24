@@ -36,7 +36,7 @@ $(document).ready(function () {
             },
             {
                 render: function (data, type, row, meta) {
-                    return new Date(row['checkInDate']).toLocaleDateString();
+                    return new Date(row['registered']).toLocaleDateString();
                 }
             },
             {

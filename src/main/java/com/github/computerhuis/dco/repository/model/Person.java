@@ -20,7 +20,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "persons")
+@Table(name = "individuals")
 public class Person {
 
     @Id
