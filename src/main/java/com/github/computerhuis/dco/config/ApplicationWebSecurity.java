@@ -1,23 +1,38 @@
 package com.github.computerhuis.dco.config;
 
 import com.github.computerhuis.dco.filter.LogFilter;
-import lombok.val;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter;
 
-import static com.github.computerhuis.dco.config.Roles.*;
+import javax.sql.DataSource;
+
 
 @Configuration
 @EnableWebSecurity
 class ApplicationWebSecurity {
+
+    private static final String QUERY_USERNAME = "select username AS id, password, case when (unregistered is null or unregistered <= CURRENT_TIMESTAMP) then 'true' else 'false' end as enabled from individual_login where username=?";
+    private static final String QUERY_AUTHORITIES = "select username as id, authority from individual_authorities where username=?";
+
+    @Autowired
+    private DataSource dataSource;
+
+    // --[ CONFIGURATION ]-----------------------------------------------------------------------------------------------------------------
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication()
+            .dataSource(dataSource)
+            .usersByUsernameQuery(QUERY_USERNAME)
+            .authoritiesByUsernameQuery(QUERY_AUTHORITIES);
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -52,31 +67,6 @@ class ApplicationWebSecurity {
         );
 
         return http.build();
-    }
-
-    @Bean
-    public InMemoryUserDetailsManager userDetailsService() {
-        val admin = User.withUsername(ADMIN_USERNAME)
-            .password(passwordEncoder().encode(ADMIN_PASSWORD))
-            .roles(ADMIN_ROLE)
-            .build();
-
-        val counter = User.withUsername(COUNTER_USERNAME)
-            .password(passwordEncoder().encode(COUNTER_PASSWORD))
-            .roles(COUNTER_ROLE)
-            .build();
-
-        val workshop = User.withUsername(WORKSHOP_USERNAME)
-            .password(passwordEncoder().encode(WORKSHOP_PASSWORD))
-            .roles(WORKSHOP_ROLE)
-            .build();
-
-        val education = User.withUsername(EDUCATION_USERNAME)
-            .password(passwordEncoder().encode(EDUCATION_PASSWORD))
-            .roles(EDUCATION_ROLE)
-            .build();
-
-        return new InMemoryUserDetailsManager(admin, counter, workshop, education);
     }
 
     @Bean
