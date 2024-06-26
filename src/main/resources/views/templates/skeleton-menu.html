@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<body>
+
+<nav th:fragment="navbar(page)" class="navbar navbar-expand-lg bg-light d-print-none">
+
+    <div class="container">
+        <div class="navbar-brand" sec:authorize="hasRole('ROLE_WORKSHOP')">
+
+            <a sec:authorize="hasRole('WORKSHOP')" th:href="@{/workshop}">
+                <img th:src="@{/assets/images/logo-ct.png}" height="25px" alt="icon"/>
+            </a>
+
+            <a sec:authorize="hasRole('ROLE_EDUCATION')" th:href="@{/education}">
+                <img th:src="@{/assets/images/logo-ct.png}" height="25px" alt="icon"/>
+            </a>
+
+            <a sec:authorize="hasRole('ROLE_COUNTER')" th:href="@{/counter}">
+                <img th:src="@{/assets/images/logo-ct.png}" height="25px" alt="icon"/>
+            </a>
+
+            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">
+                <img th:src="@{/assets/images/logo-ct.png}" height="25px" alt="icon"/>
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='computer' ? 'active': null}"
+                       th:href="@{/computer}"
+                       th:text="#{menu.computer}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='person' ? 'active': null}"
+                       th:href="@{/person}"
+                       th:text="#{menu.person}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='postal' ? 'active': null}"
+                       th:href="@{/postal}"
+                       th:text="#{menu.postal}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='ticket' ? 'active': null}"
+                       th:href="@{/ticket}"
+                       th:text="#{menu.ticket}"></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       th:classappend="${page=='timesheet' ? 'active': null}"
+                       th:href="@{/timesheet}"
+                       th:text="#{menu.timesheet}"></a>
+                </li>
+            </ul>
+
+            <form class="hidden" id="logoutform" method="post" th:action="@{/logout}">
+                <button class="ms-2 btn btn-outline-danger" type="submit">
+                    <span class="glyphicon glyphicon-off"></span>
+                    <span th:remove="tag" th:text="#{menu.logout}"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

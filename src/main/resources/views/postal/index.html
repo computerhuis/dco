@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page('postcode', 'postal')}"
+      th:lang="${#locale.language}">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page" th:text="#{menu.postal}"></li>
+    <li class="breadcrumb-item active" aria-current="page" th:text="${code}"></li>
+</ol>
+
+<div th:fragment="content" th:object="${postalView}">
+    <h1 th:text="#{postal.title}"></h1>
+    <hr/>
+    <div class="row">
+        <label class="col-4 col-form-label" for="postal_code" th:text="#{generic.postal_code}"></label>
+        <div class="col-8">
+            <input class="form-control" id="postal_code" disabled th:value="*{postal.code}">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <label class="col-4 col-form-label" for="house_number_min" th:text="#{generic.house_number_min}"></label>
+        <div class="col-8">
+            <input class="form-control" id="house_number_min" disabled th:value="*{postal.houseNumberMin}">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <label class="col-4 col-form-label" for="house_number_max" th:text="#{generic.house_number_max}"></label>
+        <div class="col-8">
+            <input class="form-control" id="house_number_max" disabled th:value="*{postal.houseNumberMax}">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <label class="col-4 col-form-label" for="street" th:text="#{generic.street}"></label>
+        <div class="col-8">
+            <input class="form-control" id="street" disabled th:value="*{postal.street}">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <label class="col-4 col-form-label" for="neighbourhood" th:text="#{generic.neighbourhood}"></label>
+        <div class="col-8">
+            <input class="form-control" id="neighbourhood" disabled th:value="*{postal.neighbourhood}">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <label class="col-4 col-form-label" for="district" th:text="#{generic.district}"></label>
+        <div class="col-8">
+            <input class="form-control" id="district" disabled th:value="*{postal.district}">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <label class="col-4 col-form-label" for="city" th:text="#{generic.district}">city:</label>
+        <div class="col-8">
+            <input class="form-control" id="city" disabled th:value="*{postal.city}">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <label class="col-4 col-form-label" for="municipality" th:text="#{generic.municipality}">municipality:</label>
+        <div class="col-8">
+            <input class="form-control" id="municipality" disabled th:value="*{postal.municipality}">
+        </div>
+    </div>
+    <div class="row mt-1">
+        <label class="col-4 col-form-label" for="province" th:text="#{generic.province}">province:</label>
+        <div class="col-8">
+            <input class="form-control" id="province" disabled th:value="*{postal.province}">
+        </div>
+    </div>
+    <hr/>
+    <div class="row mt-1">
+        <label class="col-4 col-form-label" for="url" th:text="#{generic.url}"></label>
+        <div class="col-8">
+            <a th:href="*{postal.url}" id="url" target="_blank" th:text="*{postal.url}"></a>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="scripts">
+</div>
+
+</body>
+</html>

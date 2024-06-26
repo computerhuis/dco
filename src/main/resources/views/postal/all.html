@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page(#{menu.postal},'postal')}"
+      th:lang="${#locale.language}">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page" th:text="#{menu.postal}"></li>
+    <li class="breadcrumb-item active" aria-current="page" th:text="#{menu.overview}"></li>
+</ol>
+
+<div th:fragment="content">
+    <table id="postal-table" class="table table-hover">
+        <thead>
+        <tr>
+            <th th:text="#{generic.postal_code}"></th>
+            <th th:text="#{generic.house_number}"></th>
+            <th th:text="#{generic.street}"></th>
+            <th th:text="#{generic.neighbourhood}"></th>
+            <th th:text="#{generic.district}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div th:fragment="scripts">
+    <script type="text/javascript" th:src="@{/assets/js/postal/all.js}"></script>
+</div>
+
+</body>
+</html>

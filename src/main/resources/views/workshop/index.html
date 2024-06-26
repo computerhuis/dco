@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page(#{menu.workshop}, 'workshop')}"
+      th:lang="${#locale.language}">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page" th:text="#{menu.workshop}"></li>
+    <li class="breadcrumb-item active" aria-current="page" th:text="#{menu.overview}"></li>
+</ol>
+
+<div th:fragment="content">
+    <div class="row">
+        <div class="col-12 p-2">
+            <h1 th:text="#{workshop.dashboard.title}"></h1>
+            <p th:text="#{workshop.dashboard.subtitle}"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3  d-grid gap-2">
+            <a class="btn btn-primary" th:text="#{workshop.dashboard.button.donation}"></a>
+        </div>
+        <div class="col-3 d-grid gap-2">
+            <a class="btn btn-primary" th:text="#{workshop.dashboard.button.received}"></a>
+        </div>
+        <div class="col-3 d-grid gap-2">
+            <a class="btn btn-primary" th:text="#{workshop.dashboard.button.stock}"></a>
+        </div>
+        <div class="col-3 d-grid gap-2">
+            <a class="btn btn-primary" th:text="#{workshop.dashboard.button.proof_of_issue}"></a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 p-3">
+            <table id="dashboard-table" class="table table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th th:text="#{generic.assigned}"></th>
+                    <th th:text="#{generic.computer}"></th>
+                    <th th:text="#{generic.status}"></th>
+                    <th th:text="#{workshop.dashboard.table.check_in_by}"></th>
+                    <th th:text="#{workshop.dashboard.table.model}"></th>
+                    <th th:text="#{generic.problem}"></th>
+                    <th th:text="#{generic.contact}"></th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="scripts">
+    <script type="text/javascript" th:src="@{/assets/js/workshop/dashboard.js}"></script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:insert="~{/templates/skeleton-theme :: page(#{menu.person},'person')}"
+      th:lang="${#locale.language}">
+<body>
+
+<ol th:fragment="breadcrumb" class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page" th:text="#{menu.person}"></li>
+    <li class="breadcrumb-item active" aria-current="page" th:text="#{menu.overview}"></li>
+</ol>
+
+<div th:fragment="content">
+    <table id="person-table" class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th th:text="#{generic.initials}"></th>
+            <th th:text="#{generic.infix}"></th>
+            <th th:text="#{generic.lastname}"></th>
+            <th th:text="#{generic.email}"></th>
+            <th th:text="#{generic.registered}"></th>
+            <th th:text="#{generic.unregistered}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div th:fragment="scripts">
+    <script type="text/javascript" th:src="@{/assets/js/person/all.js}"></script>
+</div>
+
+</body>
+</html>
