@@ -1,6 +1,6 @@
-package com.gitlab.computerhuis.dco.web.computer;
+package com.gitlab.computerhuis.dco.web.equipment;
 
-import com.gitlab.computerhuis.dco.repository.ComputerRepository;
+import com.gitlab.computerhuis.dco.repository.EquipmentRepository;
 import com.gitlab.computerhuis.dco.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -14,33 +14,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/computer")
+@RequestMapping("/equipment")
 @Validated
 @Controller
-class ComputerController {
+class EquipmentController {
 
-    private final ComputerRepository computerRepository;
+    private final EquipmentRepository equipmentRepository;
     private final PersonRepository personRepository;
 
     @GetMapping
     public String all() {
-        return "/computer/all";
+        return "/equipment/all";
     }
 
 
     @Transactional(readOnly = true)
     @GetMapping("/{id}")
-    public String open(@PathVariable("id") final Long id, final ComputerView view) {
+    public String open(@PathVariable("id") final Long id, final EquipmentView view) {
 
-        val computer = computerRepository.findById(id);
+        val computer = equipmentRepository.findById(id);
         if (computer.isPresent()) {
-            view.setComputer(computer.get());
+            view.setEquipment(computer.get());
 
             if (computer.get().getCustomerId() != null) {
                 val owner = personRepository.findById(computer.get().getCustomerId());
                 owner.ifPresent(view::setOwner);
             }
         }
-        return "/computer/index";
+        return "/equipment/index";
     }
 }

@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:insert="~{/templates/skeleton-theme :: page(#{menu.computer}, 'computer')}"
+      th:insert="~{/templates/skeleton-theme :: page(#{menu.equipment}, 'equipment')}"
       th:lang="${#locale.language}">
 <body>
 
 <ol th:fragment="breadcrumb" class="breadcrumb">
-    <li class="breadcrumb-item" aria-current="page" th:text="#{menu.computer}"></li>
+    <li class="breadcrumb-item" aria-current="page" th:text="#{menu.equipment}"></li>
     <li class="breadcrumb-item active" aria-current="page" th:text="${id}"></li>
 </ol>
 
-<div th:fragment="content" th:object="${computerView}">
+<div th:fragment="content" th:object="${equipmentView}">
     <form>
-        <h1 th:text="#{computer.title}"></h1>
+        <h1 th:text="#{equipment.title}"></h1>
         <hr/>
         <div class="row mt-1">
             <label class="col-4 col-form-label" th:text="#{generic.owner}"></label>
@@ -22,11 +22,11 @@
         <div class="row mt-1">
             <label class="col-4 col-form-label" for="type" th:text="#{generic.type}"></label>
             <div class="col-8">
-                <select id="type" class="form-select" th:field="*{computer.formFactor}">
+                <select id="type" class="form-select" th:field="*{equipment.category}">
                     <option
-                        th:each="computerType : ${T(com.gitlab.computerhuis.dco.enumeration.FormFactorType).values()}"
-                        th:text="${computerType.getLabel()}"
-                        th:value="${computerType}">
+                        th:each="equipmentType : ${T(com.gitlab.computerhuis.dco.enumeration.EquipmentCategoryType).values()}"
+                        th:text="${equipmentType.getLabel()}"
+                        th:value="${equipmentType}">
 
                 </select>
             </div>
@@ -34,33 +34,33 @@
         <div class="row mt-1">
             <label class="col-4 col-form-label" for="id" th:text="#{generic.id}"></label>
             <div class="col-8">
-                <input class="form-control" id="id" disabled th:value="*{computer.id}">
+                <input class="form-control" id="id" disabled th:value="*{equipment.id}">
             </div>
         </div>
         <div class="row mt-1">
             <label class="col-4 col-form-label" for="checkIn" th:text="#{generic.check_in}"></label>
             <div class="col-8">
                 <input class="form-control" id="checkIn" type="datetime-local" disabled
-                       th:value="*{computer.registered}">
+                       th:value="*{equipment.registered}">
             </div>
         </div>
         <div class="row mt-1">
             <label class="col-4 col-form-label" for="fabrikant" th:text="#{generic.manufacturer}"></label>
             <div class="col-8">
-                <input class="form-control" id="fabrikant" th:field="*{computer.manufacturer}">
+                <input class="form-control" id="fabrikant" th:field="*{equipment.manufacturer}">
             </div>
         </div>
         <div class="row mt-1">
             <label class="col-4 col-form-label" for="model" th:text="#{generic.model}"></label>
             <div class="col-8">
-                <input class="form-control" id="model" th:field="*{computer.model}">
+                <input class="form-control" id="model" th:field="*{equipment.model}">
             </div>
         </div>
         <div class="row mt-1">
             <label class="col-4 col-form-label" for="uitboek_datum" th:text="#{generic.check_out}"></label>
             <div class="col-8">
                 <input class="form-control" id="uitboek_datum" type="datetime-local"
-                       th:field="*{computer.unregistered}">
+                       th:field="*{equipment.unregistered}">
             </div>
         </div>
         <hr/>
@@ -68,7 +68,7 @@
             <label class="col-4 col-form-label" for="specificatie" th:text="#{generic.specification}"></label>
             <div class="col-8">
                 <textarea class="form-control" id="specificatie"
-                          rows="6" th:field="*{computer.specification}"></textarea>
+                          rows="6" th:field="*{equipment.specification}"></textarea>
             </div>
         </div>
 

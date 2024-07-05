@@ -1,6 +1,6 @@
 package com.gitlab.computerhuis.dco.repository.model;
 
-import com.gitlab.computerhuis.dco.enumeration.StatusType;
+import com.gitlab.computerhuis.dco.enumeration.TicketStatusType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
@@ -29,5 +29,5 @@ public class TicketStatus {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private StatusType status;
+    private TicketStatusType status;
 }

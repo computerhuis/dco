@@ -1,6 +1,7 @@
 package com.gitlab.computerhuis.dco.repository.view;
 
-import com.gitlab.computerhuis.dco.enumeration.StatusType;
+import com.gitlab.computerhuis.dco.enumeration.EquipmentCategoryType;
+import com.gitlab.computerhuis.dco.enumeration.TicketStatusType;
 import com.gitlab.computerhuis.dco.enumeration.TicketType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -16,8 +17,8 @@ public class TicketOverview {
     @Id
     private Long id;
     @Enumerated(EnumType.STRING)
-    private StatusType status;
-    private Long computerId;
+    private TicketStatusType status;
+    private Long equipmentId;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private TicketType ticketType;
@@ -27,6 +28,9 @@ public class TicketOverview {
     private String firstName;
     private String infix;
     private String lastName;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private EquipmentCategoryType category;
     private String manufacturer;
     private String model;
 
@@ -36,4 +40,12 @@ public class TicketOverview {
         }
         return null;
     }
+
+    public String getCategoryName() {
+        if (category != null) {
+            return category.getLabel();
+        }
+        return null;
+    }
+
 }

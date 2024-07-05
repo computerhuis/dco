@@ -40,6 +40,6 @@ $(document).ready(function () {
         language: {
             url: data_table_language()
         },
-        ajax: './api/computer'
+        ajax: './api/equipment'
     });
 });

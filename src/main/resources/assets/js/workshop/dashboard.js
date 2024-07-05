@@ -15,7 +15,7 @@ $(document).ready(function () {
             },
             {
                 render: function (data, type, row, meta) {
-                    return '<a class="link-opacity-25-hover" href="./computer/' + row['computerId'] + '">' + row['computerId'] + '</a>';
+                    return '<a class="link-opacity-25-hover" href="./equipment/' + row['equipmentId'] + '">' + row['equipmentId'] + '</a>';
                 }
             },
             {
@@ -41,6 +41,14 @@ $(document).ready(function () {
             },
             {
                 render: function (data, type, row, meta) {
+                    return row['categoryName'];
+                }
+            },
+            {
+                render: function (data, type, row, meta) {
+                    if (row['model'] == '') {
+                        return row['manufacturer'];
+                    }
                     return row['manufacturer'] + ' / ' + row['model'];
                 }
             },

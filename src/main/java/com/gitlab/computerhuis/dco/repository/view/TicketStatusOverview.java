@@ -1,7 +1,7 @@
 package com.gitlab.computerhuis.dco.repository.view;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.gitlab.computerhuis.dco.enumeration.StatusType;
+import com.gitlab.computerhuis.dco.enumeration.TicketStatusType;
 import com.gitlab.computerhuis.dco.repository.model.TicketStatusPrimaryKey;
 import jakarta.persistence.*;
 import lombok.*;
@@ -36,7 +36,7 @@ public class TicketStatusOverview {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private StatusType status;
+    private TicketStatusType status;
 
     @JsonIgnore
     public String getFullname() {

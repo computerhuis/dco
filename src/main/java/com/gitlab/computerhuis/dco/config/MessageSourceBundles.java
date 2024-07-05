@@ -19,7 +19,7 @@ public class MessageSourceBundles {
 
     // --[ GETTER ]-----------------------------------------------------------------------------------------------------
     public static String getLabel(final String key) {
-        return getLabel(key, LocaleContextHolder.getLocale());
+        return getLabel(key, LocaleContextHolder.getLocale(), null);
     }
 
     public static String getLabel(final String key, final Object... args) {
@@ -27,11 +27,11 @@ public class MessageSourceBundles {
     }
 
     public static String getLabel(final String key, final String language) {
-        return getLabel(key, Locale.forLanguageTag(language));
+        return getLabel(key, Locale.forLanguageTag(language), null);
     }
 
     public static String getLabel(final String key, final Locale locale) {
-        return getLabel(key, locale);
+        return getLabel(key, locale, null);
     }
 
     public static String getLabel(final String key, final String language, final Object... args) {

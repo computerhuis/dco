@@ -101,10 +101,6 @@
 
         <!-- Spring Data Dependencies -->
         <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
@@ -303,23 +299,6 @@
                     <!-- Disable the .NET Assembly Analyzer -->
                     <assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>4.28.0</version>
-                <configuration>
-                    <propertyFile>config/liquibase.properties</propertyFile>
-                    <changeLogFile>src/main/resources/db/changelog/db.changelog-master.yaml</changeLogFile>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.mariadb.jdbc</groupId>
-                        <artifactId>mariadb-java-client</artifactId>
-                        <version>${mariadb.version}</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>

@@ -1,6 +1,7 @@
 package com.gitlab.computerhuis.dco.repository.model;
 
-import com.gitlab.computerhuis.dco.enumeration.FormFactorType;
+import com.gitlab.computerhuis.dco.enumeration.EquipmentCategoryType;
+import com.gitlab.computerhuis.dco.enumeration.EquipmentStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
@@ -16,8 +17,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "computers")
-public class Computer {
+@Table(name = "equipment")
+public class Equipment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,15 +27,21 @@ public class Computer {
     private LocalDateTime unregistered;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private FormFactorType formFactor;
+    private EquipmentCategoryType category;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private EquipmentStatus status;
+
     private String manufacturer;
     private String model;
+
     private String specification;
     private Long customerId;
 
-    public String getFormFactorName() {
-        if (formFactor != null) {
-            return formFactor.getLabel();
+    public String getCategoryTypeName() {
+        if (category != null) {
+            return category.getLabel();
         }
         return null;
     }
