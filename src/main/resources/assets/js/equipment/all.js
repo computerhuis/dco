@@ -1,11 +1,16 @@
 'use strict';
 
 $(document).ready(function () {
-    $('#computer-table').DataTable({
+    $('#equipment-table').DataTable({
         columns: [
             {
                 render: function (data, type, row, meta) {
-                    return '<a class="link-opacity-25-hover" href="./computer/' + row['id'] + '">' + row['id'] + '</a>';
+                    return '<a class="link-opacity-25-hover" href="./equipment/' + row['id'] + '">' + row['id'] + '</a>';
+                }
+            },
+            {
+                render: function (data, type, row, meta) {
+                    return row['categoryName'];
                 }
             },
             {
@@ -16,11 +21,6 @@ $(document).ready(function () {
             {
                 render: function (data, type, row, meta) {
                     return row['model'];
-                }
-            },
-            {
-                render: function (data, type, row, meta) {
-                    return row['formFactorName'];
                 }
             },
             {

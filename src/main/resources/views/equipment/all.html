@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:insert="~{/templates/skeleton-theme :: page(#{menu.computer},'computer')}"
+      th:insert="~{/templates/skeleton-theme :: page(#{menu.equipment},'equipment')}"
       th:lang="${#locale.language}">
 <body>
 
 <ol th:fragment="breadcrumb" class="breadcrumb">
-    <li class="breadcrumb-item" aria-current="page" th:text="#{menu.computer}"></li>
+    <li class="breadcrumb-item" aria-current="page" th:text="#{menu.equipment}"></li>
     <li class="breadcrumb-item active" aria-current="page" th:text="#{menu.overview}"></li>
 </ol>
 
 <div th:fragment="content">
-    <table id="computer-table" class="table table-hover">
+    <table id="equipment-table" class="table table-hover">
         <thead>
         <tr>
             <th>#</th>
+            <th th:text="#{equipment.category}"></th>
             <th th:text="#{generic.manufacturer}"></th>
             <th th:text="#{generic.model}"></th>
-            <th th:text="#{generic.type}"></th>
             <th th:text="#{generic.check_in}"></th>
             <th th:text="#{generic.check_out}"></th>
         </tr>

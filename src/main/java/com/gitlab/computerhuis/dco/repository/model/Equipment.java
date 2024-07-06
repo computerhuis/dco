@@ -39,7 +39,7 @@ public class Equipment {
     private String specification;
     private Long customerId;
 
-    public String getCategoryTypeName() {
+    public String getCategoryName() {
         if (category != null) {
             return category.getLabel();
         }
