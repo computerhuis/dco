@@ -34,6 +34,13 @@ public class TicketOverview {
     private String manufacturer;
     private String model;
 
+    public String getTicketTypeName() {
+        if (ticketType != null) {
+            return ticketType.getLabel();
+        }
+        return null;
+    }
+
     public String getStatusName() {
         if (status != null) {
             return status.getLabel();

@@ -10,17 +10,22 @@ $(document).ready(function () {
             },
             {
                 render: function (data, type, row, meta) {
-                    return row['ticketType'];
+                    return row['ticketTypeName'];
                 }
             },
             {
                 render: function (data, type, row, meta) {
-                    return row['status'];
+                    return row['categoryName'];
                 }
             },
             {
                 render: function (data, type, row, meta) {
-                    return '<a class="link-opacity-25-hover" href="./computer/' + row['computerId'] + '">' + row['computerId'] + '</a>';
+                    return row['statusName'];
+                }
+            },
+            {
+                render: function (data, type, row, meta) {
+                    return '<a class="link-opacity-25-hover" href="./equipment/' + row['equipmentId'] + '">' + row['equipmentId'] + '</a>';
                 }
             },
             {
