@@ -27,7 +27,7 @@ public class Ticket {
     @Enumerated(EnumType.STRING)
     private TicketType ticketType;
 
-    private String computerId;
+    private String equipmentId;
     private String description;
 
     private LocalDateTime registered;

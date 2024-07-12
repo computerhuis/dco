@@ -20,9 +20,9 @@
             </div>
         </div>
         <div class="row mt-1">
-            <label class="col-3 col-form-label">Computer:</label>
+            <label class="col-3 col-form-label" th:text="#{generic.equipment}"></label>
             <div class="col-9">
-                <a th:href="@{'/computer/'+*{ticket.computerId}}" th:text="*{ticket.computerId}"></a>
+                <a th:href="@{'/equipment/'+*{ticket.equipmentId}}" th:text="*{ticket.equipmentId}"></a>
             </div>
         </div>
         <div class="row mt-1">

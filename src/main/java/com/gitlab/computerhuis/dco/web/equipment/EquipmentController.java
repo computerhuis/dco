@@ -32,12 +32,12 @@ class EquipmentController {
     @GetMapping("/{id}")
     public String open(@PathVariable("id") final Long id, final EquipmentView view) {
 
-        val computer = equipmentRepository.findById(id);
-        if (computer.isPresent()) {
-            view.setEquipment(computer.get());
+        val equipment = equipmentRepository.findById(id);
+        if (equipment.isPresent()) {
+            view.setEquipment(equipment.get());
 
-            if (computer.get().getCustomerId() != null) {
-                val owner = personRepository.findById(computer.get().getCustomerId());
+            if (equipment.get().getCustomerId() != null) {
+                val owner = personRepository.findById(equipment.get().getCustomerId());
                 owner.ifPresent(view::setOwner);
             }
         }
