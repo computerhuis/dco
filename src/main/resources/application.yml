@@ -5,7 +5,7 @@ spring:
   main:
     banner-mode: OFF
   lifecycle:
-    timeout-per-shutdown-phase: 20s
+    timeout-per-shutdown-phase: 1s
 
   # ====================================================================================================================
   # = MULTIPART UPLOAD
@@ -80,7 +80,7 @@ server:
 # ======================================================================================================================
 logging:
   pattern:
-    console: '%date %-5level %logger -%mdc{RID} %message%n'
+    console: '%date [%highlight(%-5level)] [%thread] [%cyan(%logger:%line)] -%mdc{RID} %message%n'
   level:
     root: INFO
     com:

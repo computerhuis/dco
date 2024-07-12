@@ -27,6 +27,11 @@ class DcoApplicationSystemTray {
     public void close() {
         log.info("Stop running dco-dashboard");
         SpringApplication.exit(applicationContext);
+        try {
+            Thread.sleep(1010);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         System.exit(0);
     }
 
