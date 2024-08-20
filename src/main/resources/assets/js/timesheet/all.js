@@ -1,34 +1,26 @@
 'use strict';
 
 $(document).ready(function () {
-    $('#person-table').DataTable({
+    $('#timesheet-table').DataTable({
         columns: [
             {
                 render: function (data, type, row, meta) {
-                    return '<a class="link-opacity-25-hover" href="./person/' + row['id'] + '">' + row['id'] + '</a>';
-                }
-            },
-            {
-                render: function (data, type, row, meta) {
-                    return row['initials'];
-                }
-            },
-            {
-                render: function (data, type, row, meta) {
-                    return row['infix'];
-                }
-            },
-            {
-                render: function (data, type, row, meta) {
-                    return row['lastName'];
-                }
-            },
-            {
-                render: function (data, type, row, meta) {
-                    if (row['email'] != null) {
-                        return '<a class="link-opacity-25-hover" href="mailto:' + row['email'] + '">' + row['email'] + '</a>';
+                    let name = '';
+                    if (row['firstName'] !== null) {
+                        name += row['firstName'];
                     }
-                    return '';
+                    if (row['infix'] !== null) {
+                        name += ' ' + row['infix'];
+                    }
+                    if (row['lastName'] !== null) {
+                        name += ' ' + row['lastName'];
+                    }
+                    return '<a class="link-opacity-25-hover" href="./person/' + row['personId'] + '">' + name.trim() + '</a>';
+                }
+            },
+            {
+                render: function (data, type, row, meta) {
+                    return '<a class="link-opacity-25-hover" href="./activity/' + row['activityId'] + '">' + row['activityName'] + '</a>';
                 }
             },
             {
@@ -48,7 +40,7 @@ $(document).ready(function () {
         language: {
             url: data_table_language()
         },
-        ajax: './api/person'
+        ajax: './api/timesheet'
     }).column('0:visible')
         .order('desc')
         .draw();

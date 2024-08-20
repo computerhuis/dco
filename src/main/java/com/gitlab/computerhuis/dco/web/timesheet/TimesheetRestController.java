@@ -1,7 +1,7 @@
 package com.gitlab.computerhuis.dco.web.timesheet;
 
-import com.gitlab.computerhuis.dco.repository.TimesheetRepository;
-import com.gitlab.computerhuis.dco.repository.model.Timesheet;
+import com.gitlab.computerhuis.dco.repository.TimesheetOverviewRepository;
+import com.gitlab.computerhuis.dco.repository.view.TimesheetOverview;
 import lombok.RequiredArgsConstructor;
 import lombok.val;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,14 +17,13 @@ import java.util.Map;
 @RestController
 class TimesheetRestController {
 
-    private final TimesheetRepository timesheetRepository;
+    private final TimesheetOverviewRepository timesheetOverviewRepository;
 
     @GetMapping
-    Map<String, List<Timesheet>> get() {
-        val result = new HashMap<String, List<Timesheet>>();
-        val data = timesheetRepository.findAll();
+    Map<String, List<TimesheetOverview>> get() {
+        val result = new HashMap<String, List<TimesheetOverview>>();
+        val data = timesheetOverviewRepository.findAll();
         result.put("data", data);
-
         return result;
     }
 }

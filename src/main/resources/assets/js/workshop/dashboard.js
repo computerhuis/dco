@@ -68,7 +68,9 @@ $(document).ready(function () {
             url: data_table_language()
         },
         ajax: './api/workshop'
-    });
+    }).column('3:visible')
+        .order('desc')
+        .draw();
 
     setInterval(function () {
         table.ajax.reload();

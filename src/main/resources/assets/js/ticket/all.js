@@ -46,5 +46,7 @@ $(document).ready(function () {
             url: data_table_language()
         },
         ajax: './api/ticket'
-    });
+    }).column('0:visible')
+        .order('desc')
+        .draw();
 });

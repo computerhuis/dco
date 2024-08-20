@@ -41,5 +41,7 @@ $(document).ready(function () {
             url: data_table_language()
         },
         ajax: './api/equipment'
-    });
+    }).column('0:visible')
+        .order('desc')
+        .draw();
 });

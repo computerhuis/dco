@@ -31,5 +31,6 @@ public class Postal {
     private String city;
     private String municipality;
     private String province;
+    private Boolean isPostbox;
 }
 

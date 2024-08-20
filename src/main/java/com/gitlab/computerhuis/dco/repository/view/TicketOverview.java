@@ -6,8 +6,11 @@ import com.gitlab.computerhuis.dco.enumeration.TicketType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.val;
 
 import java.time.LocalDateTime;
+
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 @Getter
 @Setter
@@ -33,6 +36,19 @@ public class TicketOverview {
     private EquipmentCategoryType category;
     private String manufacturer;
     private String model;
+
+    public String getPractitioner() {
+        val result = new StringBuilder();
+        result.append(firstName);
+        if (isNotBlank(infix)) {
+            result.append(" ");
+            result.append(infix);
+        }
+        result.append(" ");
+        result.append(lastName);
+
+        return result.toString().trim();
+    }
 
     public String getTicketTypeName() {
         if (ticketType != null) {
