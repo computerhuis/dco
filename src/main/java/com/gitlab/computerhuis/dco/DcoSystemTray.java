@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.info.BuildProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +15,9 @@ import java.net.URI;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-class DcoApplicationSystemTray {
+class DcoSystemTray {
 
     private final ApplicationContext applicationContext;
-    private final BuildProperties buildProperties;
 
     @Value("${server.port}")
     private String serverPort;
@@ -45,28 +43,18 @@ class DcoApplicationSystemTray {
             val menu = new PopupMenu();
             val open = new MenuItem("Open");
             open.addActionListener(e -> {
-                    if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-                        try {
-                            val url = "https://127.0.0.1:" + serverPort;
-                            log.info("Opening: {}", url);
-                            Desktop.getDesktop().browse(new URI(url));
-                        } catch (Exception browserE) {
-                            log.error("Exception: {}", browserE.getMessage());
+                        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+                            try {
+                                val url = "https://127.0.0.1:" + serverPort;
+                                log.info("Opening: {}", url);
+                                Desktop.getDesktop().browse(new URI(url));
+                            } catch (Exception browserE) {
+                                log.error("Exception: {}", browserE.getMessage());
+                            }
                         }
                     }
-                }
             );
             menu.add(open);
-
-            val help = new MenuItem("Help");
-            help.addActionListener(e -> JOptionPane.showMessageDialog(null,
-                "Name:     %s:%s   \nVersion:   %s\nBuild on: %s\n\n".formatted(buildProperties.getGroup(),
-                    buildProperties.getArtifact(),
-                    buildProperties.getVersion(),
-                    buildProperties.getTime()
-                )
-            ));
-            menu.add(help);
 
             val close = new MenuItem("Afsluiten");
             close.addActionListener(e -> {
@@ -84,7 +72,7 @@ class DcoApplicationSystemTray {
             }
 
             // Add new
-            val image = new ImageIcon(DcoApplicationSystemTray.class.getResource("/assets/images/logo-ct.png")).getImage();
+            val image = new ImageIcon(DcoSystemTray.class.getResource("/assets/images/logo-ct.png")).getImage();
             val trayIcon = new TrayIcon(image, "Computerhuis dco", menu);
             trayIcon.setImageAutoSize(true);
             tray.add(trayIcon);
