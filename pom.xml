@@ -28,12 +28,12 @@
 
     <properties>
         <!-- https://bell-sw.com/pages/downloads/ -->
-        <jre.url>https://download.bell-sw.com/java/21.0.3+12/bellsoft-jre21.0.3+12-windows-amd64.zip</jre.url>
-        <jre.sha>45cc8bc6a33adefe21446c6ba7b557d4a5fd071a</jre.sha>
-        <jre.path>jre-21.0.3</jre.path>
+        <jre.url>https://download.bell-sw.com/java/21.0.4+9/bellsoft-jre21.0.4+9-windows-amd64.zip</jre.url>
+        <jre.sha>1b9943a21c69abb478bdeeea3553c4d1e49c19f5</jre.sha>
+        <jre.path>jre-21.0.4</jre.path>
 
         <java.version>21</java.version>
-        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <mapstruct.version>1.6.2</mapstruct.version>
     </properties>
 
     <dependencyManagement>
@@ -51,7 +51,7 @@
             <dependency>
                 <groupId>de.redsix</groupId>
                 <artifactId>pdfcompare</artifactId>
-                <version>1.2.0</version>
+                <version>1.2.2</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -117,21 +117,10 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-        <!-- spring boot dependencies -=- web/undertow -->
+        <!-- spring boot dependencies -=- web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -22,7 +22,7 @@ public class Dco {
             .profiles(DEFAULT_PROFILE)
             .run(args);
 
-        if (!headless) {
+        if (!headless && SystemTray.isSupported()) {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             } catch (Exception e) {

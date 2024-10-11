@@ -35,11 +35,6 @@ class DcoSystemTray {
 
     public void start() {
         try {
-            if (!SystemTray.isSupported()) {
-                log.warn("System tray is not supported !!! ");
-                return;
-            }
-
             val menu = new PopupMenu();
             val open = new MenuItem("Open");
             open.addActionListener(e -> {
