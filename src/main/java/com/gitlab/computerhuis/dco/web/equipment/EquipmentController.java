@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/equipment")
+@RequestMapping("/apparatuur")
 @Validated
 @Controller
 class EquipmentController {

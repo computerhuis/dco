@@ -7,19 +7,19 @@
     <div class="container">
         <div class="navbar-brand" sec:authorize="hasRole('ROLE_WORKSHOP')">
 
-            <a sec:authorize="hasRole('WORKSHOP')" th:href="@{/workshop}">
+            <a sec:authorize="hasRole('WORKSHOP')" th:href="@{/werkplaats}">
                 <img th:src="@{/assets/images/logo-ct.png}" height="25px" alt="icon"/>
             </a>
 
-            <a sec:authorize="hasRole('ROLE_EDUCATION')" th:href="@{/education}">
+            <a sec:authorize="hasRole('ROLE_EDUCATION')" th:href="@{/educatie}">
                 <img th:src="@{/assets/images/logo-ct.png}" height="25px" alt="icon"/>
             </a>
 
-            <a sec:authorize="hasRole('ROLE_COUNTER')" th:href="@{/counter}">
+            <a sec:authorize="hasRole('ROLE_COUNTER')" th:href="@{/balie}">
                 <img th:src="@{/assets/images/logo-ct.png}" height="25px" alt="icon"/>
             </a>
 
-            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">
+            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/beheer}">
                 <img th:src="@{/assets/images/logo-ct.png}" height="25px" alt="icon"/>
             </a>
         </div>
@@ -33,43 +33,38 @@
                     <a class="nav-link"
                        aria-current="page"
                        th:classappend="${page=='equipment' ? 'active': null}"
-                       th:href="@{/equipment}"
-                       th:text="#{menu.equipment}"></a>
+                       th:href="@{/apparatuur}">Apparatuur</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
                        aria-current="page"
                        th:classappend="${page=='person' ? 'active': null}"
-                       th:href="@{/person}"
-                       th:text="#{menu.person}"></a>
+                       th:href="@{/persoon}">Persoon</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
                        aria-current="page"
                        th:classappend="${page=='postal' ? 'active': null}"
-                       th:href="@{/postal}"
-                       th:text="#{menu.postal}"></a>
+                       th:href="@{/postcode}">Postcode</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
                        aria-current="page"
                        th:classappend="${page=='ticket' ? 'active': null}"
-                       th:href="@{/ticket}"
-                       th:text="#{menu.ticket}"></a>
+                       th:href="@{/ticket}">Ticket</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"
                        aria-current="page"
                        th:classappend="${page=='timesheet' ? 'active': null}"
-                       th:href="@{/timesheet}"
-                       th:text="#{menu.timesheet}"></a>
+                       th:href="@{/tijdregistratie}">Tijdregistratie</a>
                 </li>
             </ul>
 
-            <form class="hidden" id="logoutform" method="post" th:action="@{/logout}">
+            <form class="hidden" id="logoutform" method="post" th:action="@{/uitloggen}">
                 <button class="ms-2 btn btn-outline-danger" type="submit">
                     <span class="glyphicon glyphicon-off"></span>
-                    <span th:remove="tag" th:text="#{menu.logout}"></span>
+                    <span th:remove="tag">Uitloggen</span>
                 </button>
             </form>
         </div>

@@ -43,7 +43,7 @@ class ApplicationWebSecurity {
         http.headers(headers -> headers.contentSecurityPolicy(contentSecurityPolicy -> contentSecurityPolicy.policyDirectives("default-src 'self'; img-src 'self' data:")));
 
         http.authorizeHttpRequests((authorizeHttpRequests) ->
-            authorizeHttpRequests.requestMatchers("/assets/**", "/authenticate", "/authenticate/**").permitAll()
+            authorizeHttpRequests.requestMatchers("/assets/**", "/authenticeren", "/authenticeren/**").permitAll()
                 .anyRequest().authenticated()
         );
 
@@ -52,9 +52,7 @@ class ApplicationWebSecurity {
             formLogin
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .loginPage("/authenticate")
-                .failureUrl("/authenticate?failed")
-                .loginProcessingUrl("/authenticate/process")
+                .loginPage("/authenticeren")
         );
 
         // Logout
@@ -62,8 +60,8 @@ class ApplicationWebSecurity {
             logout.deleteCookies("remove")
                 .invalidateHttpSession(false)
                 .deleteCookies("JSESSIONID")
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/authenticate")
+                .logoutUrl("/uitloggen")
+                .logoutSuccessUrl("/authenticeren")
         );
 
         return http.build();

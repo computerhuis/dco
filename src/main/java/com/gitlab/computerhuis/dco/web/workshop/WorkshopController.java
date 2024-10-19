@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-@RequestMapping("/workshop")
+@RequestMapping("/werkplaats")
 @Controller
 class WorkshopController {
 

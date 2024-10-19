@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
-@RequestMapping("/api/postal")
+@RequestMapping("/api/postcode")
 @RestController
 class PostalRestController {
 

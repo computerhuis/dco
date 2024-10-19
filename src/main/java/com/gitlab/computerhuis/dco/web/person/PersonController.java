@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/person")
+@RequestMapping("/persoon")
 @Validated
 @Controller
 class PersonController {

@@ -40,7 +40,7 @@ $(document).ready(function () {
         language: {
             url: data_table_language()
         },
-        ajax: './api/timesheet'
+        ajax: './api/tijdregistratie'
     }).column('0:visible')
         .order('desc')
         .draw();

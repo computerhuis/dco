@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping("/timesheet")
+@RequestMapping("/tijdregistratie")
 @Validated
 @Controller
 class TimesheetController {

@@ -67,7 +67,7 @@ $(document).ready(function () {
         language: {
             url: data_table_language()
         },
-        ajax: './api/workshop'
+        ajax: './api/werkplaats'
     }).column('3:visible')
         .order('desc')
         .draw();

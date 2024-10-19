@@ -48,7 +48,7 @@ $(document).ready(function () {
         language: {
             url: data_table_language()
         },
-        ajax: './api/person'
+        ajax: './api/persoon'
     }).column('0:visible')
         .order('desc')
         .draw();

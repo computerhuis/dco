@@ -50,7 +50,7 @@ $(document).ready(function () {
         language: {
             url: data_table_language()
         },
-        ajax: './api/postal'
+        ajax: './api/postcode'
     }).column('0:visible')
         .order('asc')
         .draw();
