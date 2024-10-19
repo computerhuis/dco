@@ -20,4 +20,4 @@ logging:
     com:
       gitlab:
         computerhuis:
-          dco: TRACE
+          dco: DEBUG
